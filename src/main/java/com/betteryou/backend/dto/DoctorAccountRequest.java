@@ -2,9 +2,10 @@ package com.betteryou.backend.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class BookingRequest {
+public class DoctorAccountRequest {
 
     @NotBlank
     @Size(max = 120)
@@ -16,17 +17,14 @@ public class BookingRequest {
     private String email;
 
     @NotBlank
-    @Size(max = 40)
-    private String phone;
+    @Size(min = 8, max = 120)
+    private String password;
 
     @NotBlank
-    @Size(max = 120)
-    private String service;
+    @Pattern(regexp = "ADMIN|SPECIALIST")
+    private String role;
 
-    @Size(max = 1000)
-    private String message;
-
-    public BookingRequest() {
+    public DoctorAccountRequest() {
     }
 
     public String getName() {
@@ -45,27 +43,19 @@ public class BookingRequest {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getService() {
-        return service;
+    public String getRole() {
+        return role;
     }
 
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
